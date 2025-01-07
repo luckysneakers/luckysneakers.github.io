@@ -16,13 +16,25 @@
             <div class="bar"></div>
         </div>
         <nav class="nav-menu">
-            <input type="text" id="searchInput" placeholder="Buscar productos...">
+            <div class="search-container">
+                <input type="text" id="mobileSearchInput" placeholder="Buscar productos...">
+                <button id="mobileSearchButton">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
             <ul>
                 <li><a href="#adidas">Adidas</a></li>
                 <li><a href="#nike">Nike</a></li>
                 <li><a href="#puma">Puma</a></li>
                 <li><a href="#vans">Vans</a></li>
             </ul>
+            <label class="theme-switch">
+                <input type="checkbox" id="mobile-theme-toggle">
+                <div class="switch">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </div>
+            </label>
         </nav>
     </header>
 
