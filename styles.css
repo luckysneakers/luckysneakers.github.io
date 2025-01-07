@@ -135,8 +135,8 @@ body {
     position: relative;
     display: inline-block;
     width: 60px;
-    height: 34px;
-    margin-left: 20px;
+    height: 30px;
+    margin-left: 1rem;
 }
 
 .theme-switch input {
@@ -152,52 +152,35 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #f1c40f;
+    background-color: var(--card-bg);
+    border: 2px solid var(--border);
     transition: .4s;
-    border-radius: 34px;
+    border-radius: 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px;
+    padding: 0 5px;
+}
+
+.switch i {
+    color: var(--text-color);
+    font-size: 14px;
 }
 
 .switch:before {
-    content: "";
     position: absolute;
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 2px;
+    bottom: 2px;
+    background-color: var(--text-color);
     transition: .4s;
     border-radius: 50%;
-    z-index: 2;
-}
-
-.switch .fa-sun {
-    color: #f1c40f;
-    margin-left: 5px;
-}
-
-.switch .fa-moon {
-    color: #f1c40f;
-    margin-right: 5px;
-}
-
-input:checked + .switch {
-    background-color: #2c3e50;
 }
 
 input:checked + .switch:before {
-    transform: translateX(26px);
-}
-
-input:checked + .switch .fa-sun {
-    color: #7f8c8d;
-}
-
-input:checked + .switch .fa-moon {
-    color: #fff;
+    transform: translateX(30px);
 }
 
 /* Section Styles */
@@ -344,6 +327,38 @@ h2::after {
 }
 
 @media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: var(--nav-bg);
+        padding: 1rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .theme-switch {
+        margin: 1rem 0;
+        display: inline-block;
+    }
+
+    .search-container {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    #searchInput {
+        width: 100%;
+        max-width: none;
+    }
+
     .productos {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 15px;
@@ -366,6 +381,98 @@ h2::after {
     .producto .whatsapp-btn {
         font-size: 0.85rem;
         padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .brand-name {
+        font-size: 1.4rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .producto h3 {
+        font-size: 1rem;
+    }
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 3px 0;
+    transition: 0.4s;
+}
+
+.nav-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 60px 20px 20px;
+    transition: 0.4s;
+    z-index: 999;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-menu.active {
+    right: 0;
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.nav-menu ul li {
+    margin: 15px 0;
+}
+
+.nav-menu ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: 0.3s;
+}
+
+.nav-menu ul li a:hover {
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
     }
 }
 
@@ -617,97 +724,5 @@ h2::after {
 
     #searchInput:focus {
         width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .navbar {
-        padding: 1rem;
-    }
-
-    .brand-name {
-        font-size: 1.4rem;
-    }
-    
-    h2 {
-        font-size: 2rem;
-    }
-    
-    .producto h3 {
-        font-size: 1rem;
-    }
-}
-
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 5px;
-}
-
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    margin: 3px 0;
-    transition: 0.4s;
-}
-
-.nav-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 250px;
-    height: 100vh;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 60px 20px 20px;
-    transition: 0.4s;
-    z-index: 999;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.nav-menu.active {
-    right: 0;
-}
-
-.nav-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
-
-.nav-menu ul li {
-    margin: 15px 0;
-}
-
-.nav-menu ul li a {
-    color: #333;
-    text-decoration: none;
-    font-size: 1.1em;
-    transition: 0.3s;
-}
-
-.nav-menu ul li a:hover {
-    color: #666;
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-    }
-    
-    .nav-menu {
-        display: block;
-    }
-
-    .navbar {
-        display: none;
     }
 }
